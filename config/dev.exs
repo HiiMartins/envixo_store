@@ -3,7 +3,7 @@ import Config
 # Configure your database
 config :envixo_store, EnvixoStore.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "docker",
   hostname: "localhost",
   database: "envixo_store_dev",
   show_sensitive_data_on_connection_error: true,
