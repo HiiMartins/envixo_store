@@ -17,7 +17,7 @@ defmodule EnvixoStoreWeb.Router do
   scope "/", EnvixoStoreWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    live "/", PageLive, :index
   end
 
   # Other scopes may use custom stacks.
