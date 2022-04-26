@@ -1,9 +1,9 @@
 defmodule EnvixoStore do
-  @moduledoc """
-  EnvixoStore keeps the contexts that define your domain
-  and business logic.
+  alias EnvixoStore.Product
 
-  Contexts are also responsible for managing your data, regardless
-  if it comes from the database, an external API or others.
-  """
+  defdelegate create_product(params), to: Product.Create, as: :call
+  defdelegate delete_product(params), to: Product.Delete, as: :call
+  defdelegate fetch_product(params), to: Product.Get, as: :call
+  defdelegate list_all_products, to: Product.GetAll, as: :call
+  defdelegate update_product(params), to: Product.Update, as: :call
 end
