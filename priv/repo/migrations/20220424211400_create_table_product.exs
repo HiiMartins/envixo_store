@@ -9,6 +9,8 @@ defmodule EnvixoStore.Repo.Migrations.CreateTableProduct do
        add :status, :boolean
        add :price, :float
        add :promotion_price, :float
+
+       timestamps()
     end
   end
 end
