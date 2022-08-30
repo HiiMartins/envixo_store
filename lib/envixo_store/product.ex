@@ -2,7 +2,10 @@ defmodule EnvixoStore.Product do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias EnvixoStore.Product.Category
+
   @primary_key {:id, Ecto.UUID, autogenerate: true}
+  @foreign_key_type Ecto.UUID
 
   schema "products" do
     field :title, :string
@@ -10,9 +13,13 @@ defmodule EnvixoStore.Product do
     field :status, :boolean, default: false
     field :price, :float
     field :promotion_price, :float
+
+    belongs_to(:category, Category)
+
+    timestamps()
   end
 
-  @required_params [:title, :description, :status, :price]
+  @required_params [:title, :description, :status, :price, :category_id]
 
   def build(params) do
     params
