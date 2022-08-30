@@ -9,13 +9,12 @@ defmodule EnvixoStore.Product.Category do
 
   schema "categories" do
     field :title, :string
-
-    belongs_to(:product, Product)
+    has_many(:product, Product)
 
     timestamps()
   end
 
-  @required_params [:title, :product_id]
+  @required_params [:title]
 
   def build(params) do
     params
@@ -23,10 +22,10 @@ defmodule EnvixoStore.Product.Category do
     |> apply_action(:insert)
   end
 
-  def changeset(params) do
+  defp changeset(params) do
     %__MODULE__{}
     |> cast(params, @required_params)
     |> validate_required(@required_params)
-    |> assoc_constraint(:product)
+    |> unique_constraint(:title)
   end
 end
